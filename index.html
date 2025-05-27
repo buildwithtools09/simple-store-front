@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shop the best deals on trendy gadgets, smartphones, laptops, and accessories at unbeatable prices.">
+    <title>TechShop - Best Deals on Gadgets</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#" class="text-2xl font-bold text-gray-800">TechShop</a>
+                </div>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-gray-600 hover:text-gray-900">Home</a>
+                    <a href="#" class="text-gray-600 hover:text-gray-900">Shop</a>
+                    <a href="#" class="text-gray-600 hover:text-gray-900">About</a>
+                    <a href="#" class="text-gray-600 hover:text-gray-900">Contact</a>
+                    <div class="relative">
+                        <i class="fas fa-shopping-cart text-gray-600 text-xl"></i>
+                        <span class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">3</span>
+                    </div>
+                </div>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button class="mobile-menu-button">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="mobile-menu hidden md:hidden">
+            <a href="#" class="block py-2 px-4 text-gray-600 hover:bg-gray-100">Home</a>
+            <a href="#" class="block py-2 px-4 text-gray-600 hover:bg-gray-100">Shop</a>
+            <a href="#" class="block py-2 px-4 text-gray-600 hover:bg-gray-100">About</a>
+            <a href="#" class="block py-2 px-4 text-gray-600 hover:bg-gray-100">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <section class="pt-20 bg-gradient-to-r from-blue-500 to-purple-600 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">Shop the Best Deals!</h1>
+                <p class="text-xl md:text-2xl mb-8">Trendy gadgets at unbeatable prices</p>
+                <button class="bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition duration-300">Shop Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Categories -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-8 rounded-lg text-center hover:shadow-lg transition duration-300">
+                    <i class="fas fa-mobile-alt text-4xl text-purple-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold">Smartphones</h3>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-lg text-center hover:shadow-lg transition duration-300">
+                    <i class="fas fa-laptop text-4xl text-purple-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold">Laptops</h3>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-lg text-center hover:shadow-lg transition duration-300">
+                    <i class="fas fa-headphones text-4xl text-purple-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold">Accessories</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Grid -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Product Card 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+                    <img src="https://images.pexels.com/photos/404280/pexels-photo-404280.jpeg" alt="Smartphone" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2">Latest Smartphone</h3>
+                        <p class="text-purple-600 text-xl font-bold mb-4">₹999</p>
+                        <button class="w-full bg-purple-600 text-white py-2 rounded hover:bg-purple-700 transition duration-300">Add to Cart</button>
+                    </div>
+                </div>
+                <!-- Repeat similar structure for other products -->
+                <!-- Product Card 2-6 with different images and prices -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Signup -->
+    <section class="py-16 bg-purple-600 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold mb-8">Subscribe for Deals</h2>
+            <form class="max-w-md mx-auto flex gap-4">
+                <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-2 rounded-l focus:outline-none text-gray-800">
+                <button type="submit" class="bg-gray-800 text-white px-6 py-2 rounded-r hover:bg-gray-700 transition duration-300">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <div class="space-y-2">
+                        <a href="#" class="block text-gray-300 hover:text-white">About</a>
+                        <a href="#" class="block text-gray-300 hover:text-white">FAQs</a>
+                        <a href="#" class="block text-gray-300 hover:text-white">Contact</a>
+                        <a href="#" class="block text-gray-300 hover:text-white">Terms</a>
+                    </div>
+                </div>
+                <!-- Social Media Icons -->
+                <div class="text-center md:text-left">
+                    <h3 class="text-lg font-semibold mb-4">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center pt-8 border-t border-gray-700">
+                <p class="text-gray-300">&copy; 2024 TechShop. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.querySelector('.mobile-menu-button');
+        const mobileMenu = document.querySelector('.mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
