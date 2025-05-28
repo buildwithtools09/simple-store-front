@@ -3,52 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts - Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Tailwind CSS CDN -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <!-- Font Awesome CDN for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Custom Modular CSS for additional styling -->
+    <title>TechShop - Premium Electronics Store</title>
+    <!-- Enhanced Modular CSS -->
     <style>
-      /* Modular CSS: Product Card */
-      .product-card { @apply bg-white rounded-lg shadow-md p-4 flex flex-col transition-transform transform hover:scale-105; }
-      .product-image { @apply w-full h-48 object-cover rounded-md mb-2; }
-      .product-title { @apply font-semibold text-lg mb-1; }
-      .product-price { @apply text-green-600 font-bold mb-2; }
-      .product-rating { @apply text-yellow-400 mb-2; }
-      /* Responsive tweaks */
-      @media (max-width: 640px) {
-        .product-card { @apply p-2; }
-        .product-image { @apply h-32; }
-      }
-      /* Hero Section Modular CSS */
-      .hero-bg { @apply bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500; }
-      .hero-overlay { @apply bg-black bg-opacity-40 absolute inset-0; }
-      .hero-content { @apply relative z-10 text-center text-white py-24 px-4; }
-      /* Navigation Modular CSS */
-      .nav-link { @apply text-gray-700 hover:text-blue-600 transition-colors duration-200 cursor-pointer; }
-      .nav-link.active { @apply font-bold text-blue-700; }
-    </style>
-    <meta name="description" content="Discover premium tech gadgets, smartphones, laptops, and accessories at TechShop. Get exclusive deals and unbeatable prices on the latest electronics.">
-    <meta name="keywords" content="tech shop, gadgets, smartphones, laptops, accessories, electronics, best deals, premium electronics">
-    <title>TechShop - Your Premium Electronics Destination</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        body { font-family: 'Poppins', sans-serif; }
-        .lazy-load { opacity: 0; transition: opacity 0.5s; }
-        .lazy-load.loaded { opacity: 1; }
-        .hero-gradient {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4));
+        /* Base Styles */
+        body { 
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
         }
-        .dropdown-menu { display: none; }
-        .group:hover .dropdown-menu { display: block; }
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+
+        /* Product Card Enhancements */
+        .product-card {
+            @apply bg-white rounded-lg shadow-md p-4 flex flex-col transition-all duration-300;
+            transform: translateY(0);
         }
-        .float-animation { animation: float 3s ease-in-out infinite; }
+        .product-card:hover {
+            @apply shadow-xl;
+            transform: translateY(-5px);
+        }
+        .product-image {
+            @apply w-full h-48 object-cover rounded-md mb-4 transition-transform duration-300;
+        }
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        /* Mobile Menu Animations */
+        .mobile-menu {
+            transition: max-height 0.3s ease-in-out;
+            max-height: 0;
+            overflow: hidden;
+        }
+        .mobile-menu.active {
+            max-height: 500px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-section { min-height: 400px; }
+            .product-grid { grid-template-columns: repeat(2, 1fr); }
+            .nav-links { display: none; }
+            .mobile-menu-button { display: block; }
+        }
+        @media (max-width: 480px) {
+            .hero-section { min-height: 300px; }
+            .product-grid { grid-template-columns: 1fr; }
+            .hero-content h1 { font-size: 2rem; }
+        }
+
+        /* Performance Optimizations */
+        img { loading: lazy; }
+        .lazy-load {
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .lazy-load.loaded {
+            opacity: 1;
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -215,247 +232,111 @@
         </div>
     </section>
 
-    <!-- Product Grid -->
-    <section id="products" class="max-w-7xl mx-auto py-12 px-4">
-      <h2 class="text-2xl font-bold mb-6 text-gray-800">Best Sellers</h2>
-      <!-- Product grid with more dummy products -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        <!-- Product Card Example -->
-        <div class="product-card">
-          <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=400&q=80" alt="Smartphone" class="product-image">
-          <div class="product-title">SuperPhone X</div>
-          <div class="product-rating">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="far fa-star"></i>
-          </div>
-          <div class="product-price">$799</div>
-          <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Add to Cart</button>
-        </div>
-        <div class="product-card">
-          <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=80" alt="Laptop" class="product-image">
-          <div class="product-title">UltraBook Pro</div>
-          <div class="product-rating">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-            <i class="far fa-star"></i>
-          </div>
-          <div class="product-price">$1199</div>
-          <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Add to Cart</button>
-        </div>
-        <div class="product-card">
-          <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Headphones" class="product-image">
-          <div class="product-title">Noise Cancelling Headphones</div>
-          <div class="product-rating">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-          </div>
-          <div class="product-price">$299</div>
-          <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Add to Cart</button>
-        </div>
-        <div class="product-card">
-          <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Tablet" class="product-image">
-          <div class="product-title">TabMaster 10"</div>
-          <div class="product-rating">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-          </div>
-          <div class="product-price">$499</div>
-          <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Add to Cart</button>
-        </div>
-        <!-- More Dummy Products -->
-        <div class="product-card">
-          <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=400&q=80" alt="Smartwatch" class="product-image">
-          <div class="product-title">SmartWatch Z</div>
-          <div class="product-rating">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-            <i class="far fa-star"></i>
-          </div>
-          <div class="product-price">$199</div>
-          <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Add to Cart</button>
-        </div>
-        <div class="product-card">
-          <img src="https://images.unsplash.com/photo-1512499617640-c2f999098c01?auto=format&fit=crop&w=400&q=80" alt="Bluetooth Speaker" class="product-image">
-          <div class="product-title">Bluetooth Speaker</div>
-          <div class="product-rating">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-          </div>
-          <div class="product-price">$89</div>
-          <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Add to Cart</button>
-        </div>
-        <div class="product-card">
-          <img src="https://images.unsplash.com/photo-1519985176271-adb1088fa94c?auto=format&fit=crop&w=400&q=80" alt="Wireless Charger" class="product-image">
-          <div class="product-title">Wireless Charger</div>
-          <div class="product-rating">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-          </div>
-          <div class="product-price">$39</div>
-          <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Add to Cart</button>
-        </div>
-        <div class="product-card">
-          <img src="https://images.unsplash.com/photo-1519121784082-c1e1edb7b6b5?auto=format&fit=crop&w=400&q=80" alt="Gaming Mouse" class="product-image">
-          <div class="product-title">Gaming Mouse</div>
-          <div class="product-rating">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="far fa-star"></i>
-          </div>
-          <div class="product-price">$59</div>
-          <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Add to Cart</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section class="py-16 bg-white">
+    <!-- Product Grid Section -->
+    <section id="products" class="py-16 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center mb-12">What Our Customers Say</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Testimonial 1 -->
-                <div class="bg-purple-50 p-6 rounded-xl hover:shadow-lg transition duration-300">
-                    <div class="flex items-center mb-4">
-                        <img src="https://i.pravatar.cc/60?img=1" alt="Customer" class="w-12 h-12 rounded-full">
-                        <div class="ml-4">
-                            <h4 class="font-semibold">John Doe</h4>
-                            <div class="flex text-yellow-400">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-gray-600 italic">"Exceptional service and product quality! The delivery was quick, and the laptop I purchased exceeded my expectations. Will definitely shop here again!"</p>
+            <h2 class="text-3xl font-bold text-center mb-12">Featured Products</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Product 1: Smartphone -->
+                <div class="product-card group">
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9" alt="Smartphone" class="product-image" loading="lazy">
+                    <h3 class="product-title">Premium Smartphone</h3>
+                    <div class="product-rating">★★★★★</div>
+                    <p class="product-price">$999.99</p>
+                    <button class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-colors">
+                        <i class="fas fa-shopping-cart mr-2"></i>Add to Cart
+                    </button>
                 </div>
-
-                <!-- Testimonial 2 -->
-                <div class="bg-purple-50 p-6 rounded-xl hover:shadow-lg transition duration-300">
-                    <div class="flex items-center mb-4">
-                        <img src="https://i.pravatar.cc/60?img=2" alt="Customer" class="w-12 h-12 rounded-full">
-                        <div class="ml-4">
-                            <h4 class="font-semibold">Sarah Smith</h4>
-                            <div class="flex text-yellow-400">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-gray-600 italic">"The customer support team was incredibly helpful in guiding me through my purchase. The prices are competitive, and the products are authentic."</p>
+                <!-- Product 2: Laptop -->
+                <div class="product-card group">
+                    <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853" alt="Laptop" class="product-image" loading="lazy">
+                    <h3 class="product-title">Ultra-Slim Laptop</h3>
+                    <div class="product-rating">★★★★☆</div>
+                    <p class="product-price">$1299.99</p>
+                    <button class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-colors">
+                        <i class="fas fa-shopping-cart mr-2"></i>Add to Cart
+                    </button>
                 </div>
-
-                <!-- Testimonial 3 -->
-                <div class="bg-purple-50 p-6 rounded-xl hover:shadow-lg transition duration-300">
-                    <div class="flex items-center mb-4">
-                        <img src="https://i.pravatar.cc/60?img=3" alt="Customer" class="w-12 h-12 rounded-full">
-                        <div class="ml-4">
-                            <h4 class="font-semibold">Mike Johnson</h4>
-                            <div class="flex text-yellow-400">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-gray-600 italic">"Great deals and discounts! I saved a lot on my new smartphone. The website is user-friendly, and checkout was smooth."</p>
+                <!-- Product 3: Headphones -->
+                <div class="product-card group">
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e" alt="Headphones" class="product-image" loading="lazy">
+                    <h3 class="product-title">Wireless Headphones</h3>
+                    <div class="product-rating">★★★★★</div>
+                    <p class="product-price">$199.99</p>
+                    <button class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-colors">
+                        <i class="fas fa-shopping-cart mr-2"></i>Add to Cart
+                    </button>
+                </div>
+                <!-- Product 4: Smartwatch -->
+                <div class="product-card group">
+                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30" alt="Smartwatch" class="product-image" loading="lazy">
+                    <h3 class="product-title">Smart Watch Pro</h3>
+                    <div class="product-rating">★★★★☆</div>
+                    <p class="product-price">$299.99</p>
+                    <button class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-colors">
+                        <i class="fas fa-shopping-cart mr-2"></i>Add to Cart
+                    </button>
+                </div>
+                <!-- Product 5: Tablet -->
+                <div class="product-card group">
+                    <img src="https://images.unsplash.com/photo-1585790050230-5dd28404ccb9" alt="Tablet" class="product-image" loading="lazy">
+                    <h3 class="product-title">Pro Tablet 2024</h3>
+                    <div class="product-rating">★★★★★</div>
+                    <p class="product-price">$799.99</p>
+                    <button class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-colors">
+                        <i class="fas fa-shopping-cart mr-2"></i>Add to Cart
+                    </button>
+                </div>
+                <!-- Product 6: Camera -->
+                <div class="product-card group">
+                    <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32" alt="Camera" class="product-image" loading="lazy">
+                    <h3 class="product-title">Digital Camera Pro</h3>
+                    <div class="product-rating">★★★★☆</div>
+                    <p class="product-price">$699.99</p>
+                    <button class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-colors">
+                        <i class="fas fa-shopping-cart mr-2"></i>Add to Cart
+                    </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Live Chat Widget -->
-    <div class="fixed bottom-4 right-4 z-50">
-        <button class="bg-purple-600 text-white p-4 rounded-full shadow-lg hover:bg-purple-700 transition duration-300 transform hover:scale-105 group">
-            <i class="fas fa-comments text-2xl"></i>
-            <span class="absolute right-full mr-2 bg-white text-purple-600 px-4 py-2 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Chat with us!</span>
-        </button>
-    </div>
-
-    <!-- Newsletter Signup -->
-    <section class="py-16 bg-gradient-to-r from-purple-600 to-indigo-600 text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl font-bold mb-4">Stay Updated with Latest Deals</h2>
-            <p class="text-lg mb-8 text-gray-200">Subscribe to our newsletter and get exclusive offers directly in your inbox</p>
-            <form class="max-w-md mx-auto flex gap-4">
-                <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-300 text-gray-800">
-                <button type="submit" class="bg-white text-purple-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300 transform hover:scale-105">Subscribe</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Footer -->
+    <!-- Footer Section -->
     <footer class="bg-gray-900 text-white py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
-                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
-                    <div class="space-y-2">
-                        <a href="#" class="block text-gray-300 hover:text-white transition duration-300">About Us</a>
-                        <a href="#" class="block text-gray-300 hover:text-white transition duration-300">FAQs</a>
-                        <a href="#" class="block text-gray-300 hover:text-white transition duration-300">Contact</a>
-                        <a href="#" class="block text-gray-300 hover:text-white transition duration-300">Terms</a>
+                    <h3 class="text-xl font-bold mb-4">TechShop</h3>
+                    <p class="text-gray-400">Your one-stop destination for premium electronics and gadgets.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
                 <div>
-                    <h3 class="text-lg font-semibold mb-4">Categories</h3>
-                    <div class="space-y-2">
-                        <a href="#" class="block text-gray-300 hover:text-white transition duration-300">Smartphones</a>
-                        <a href="#" class="block text-gray-300 hover:text-white transition duration-300">Laptops</a>
-                        <a href="#" class="block text-gray-300 hover:text-white transition duration-300">Tablets</a>
-                        <a href="#" class="block text-gray-300 hover:text-white transition duration-300">Accessories</a>
-                    </div>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Customer Service</h3>
-                    <div class="space-y-2">
-                        <a href="#" class="block text-gray-300 hover:text-white transition duration-300">Shipping Info</a>
-                        <a href="#" class="block text-gray-300 hover:text-white transition duration-300">Returns</a>
-                        <a href="#" class="block text-gray-300 hover:text-white transition duration-300">Order Status</a>
-                        <a href="#" class="block text-gray-300 hover:text-white transition duration-300">Payment Options</a>
-                    </div>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Connect With Us</h3>
-                    <div class="flex space-x-4 mb-4">
-                        <a href="#" class="text-gray-300 hover:text-white transition duration-300 transform hover:scale-110"><i class="fab fa-facebook text-2xl"></i></a>
-                        <a href="#" class="text-gray-300 hover:text-white transition duration-300 transform hover:scale-110"><i class="fab fa-twitter text-2xl"></i></a>
-                        <a href="#" class="text-gray-300 hover:text-white transition duration-300 transform hover:scale-110"><i class="fab fa-instagram text-2xl"></i></a>
-                        <a href="#" class="text-gray-300 hover:text-white transition duration-300 transform hover:scale-110"><i class="fab fa-youtube text-2xl"></i></a>
-                    </div>
-                    <p class="text-gray-300">Email: support@techshop.com</p>
-                    <p class="text-gray-300">Phone: (555) 123-4567</p>
+                    <h4 class="text-lg font-semibold mb-4">Newsletter</h4>
+                    <form class="flex">
+                        <input type="email" placeholder="Enter your email" class="bg-gray-800 text-white px-4 py-2 rounded-l-md w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <button type="submit" class="bg-blue-600 px-4 py-2 rounded-r-md hover:bg-blue-700 transition-colors">Subscribe</button>
+                    </form>
                 </div>
             </div>
-            <div class="text-center pt-8 border-t border-gray-800">
-                <p class="text-gray-300">&copy; 2024 TechShop. All rights reserved.</p>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 TechShop. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -504,50 +385,3 @@
     </script>
 </body>
 </html>
-
-// Responsive Layout Enhancements 
-<style>
-    @media (max-width: 768px) {
-        .hero-section {
-            height: 400px;
-        }
-        .product-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
-    @media (max-width: 480px) {
-        .hero-section {
-            height: 300px;
-        }
-        .product-grid {
-            grid-template-columns: 1fr;
-        }
-    }
-</style>
-<!-- Clean Code & Structure -->
-<!-- Modular CSS and Comments -->
-<style>
-    /* Hero Section Styles */
-    .hero-section {
-        /* Full-width background image with overlay */
-        background-image: url('path/to/image.jpg');
-        background-size: cover;
-        position: relative;
-        overflow: hidden;
-    }
-    .hero-overlay {
-        /* Gradient overlay for visual depth */
-        background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.5));
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
-    /* Product Grid Styles */
-    .product-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 20px;
-    }
-</style>
