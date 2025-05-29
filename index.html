@@ -3,455 +3,424 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Google Fonts - Poppins -->
+    <meta name="description" content="Discover premium tech gadgets, smartphones, laptops, and accessories at TechShop. Get exclusive deals and unbeatable prices on the latest electronics.">
+    <meta name="keywords" content="tech shop, gadgets, smartphones, laptops, accessories, electronics, best deals, premium electronics">
+    <title>TechShop - Your Premium Electronics Destination</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Tailwind CSS CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <!-- Font Awesome CDN for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <title>TechShop - Premium Electronics Store</title>
-    <!-- Enhanced Modular CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* Base Styles */
-        body { 
-            font-family: 'Poppins', sans-serif;
-            scroll-behavior: smooth;
+        body { font-family: 'Poppins', sans-serif; }
+        .lazy-load { opacity: 0; transition: opacity 0.5s; }
+        .lazy-load.loaded { opacity: 1; }
+        .hero-gradient {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4));
         }
-
-        /* Product Card Enhancements */
-        .product-card {
-            @apply bg-white rounded-lg shadow-md p-4 flex flex-col transition-all duration-300;
-            transform: translateY(0);
+        .dropdown-menu { display: none; }
+        .group:hover .dropdown-menu { display: block; }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
         }
-        .product-card:hover {
-            @apply shadow-xl;
-            transform: translateY(-5px);
-        }
-        .product-image {
-            @apply w-full h-48 object-cover rounded-md mb-4 transition-transform duration-300;
-        }
-        .product-card:hover .product-image {
-            transform: scale(1.05);
-        }
-
-        /* Mobile Menu Animations */
-        .mobile-menu {
-            transition: max-height 0.3s ease-in-out;
-            max-height: 0;
-            overflow: hidden;
-        }
-        .mobile-menu.active {
-            max-height: 500px;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero-section { min-height: 400px; }
-            .product-grid { grid-template-columns: repeat(2, 1fr); }
-            .nav-links { display: none; }
-            .mobile-menu-button { display: block; }
-        }
-        @media (max-width: 480px) {
-            .hero-section { min-height: 300px; }
-            .product-grid { grid-template-columns: 1fr; }
-            .hero-content h1 { font-size: 2rem; }
-        }
-
-        /* Performance Optimizations */
-        img { loading: lazy; }
-        .lazy-load {
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-        }
-        .lazy-load.loaded {
-            opacity: 1;
-        }
+        .float-animation { animation: float 3s ease-in-out infinite; }
     </style>
 </head>
 <body class="bg-gray-50">
     <!-- Navbar -->
-    <nav class="bg-white shadow sticky top-0 z-50">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
-          <div class="flex">
-            <a href="#home" class="text-2xl font-bold text-blue-600">TechShop</a>
-            <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
-              <!-- Navigation links scroll to dummy sections -->
-              <a href="#products" class="nav-link">Products</a>
-              <a href="#categories" class="nav-link">Categories</a>
-              <a href="#testimonials" class="nav-link">Testimonials</a>
-              <a href="#newsletter" class="nav-link">Newsletter</a>
-              <a href="#contact" class="nav-link">Contact</a>
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#" class="text-2xl font-bold text-purple-600">TechShop</a>
+                </div>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <div class="relative group">
+                        <button class="text-gray-600 hover:text-purple-600 flex items-center">
+                            Shop <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div class="dropdown-menu absolute w-48 bg-white shadow-xl rounded-lg py-2 mt-2">
+                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-purple-50">Smartphones</a>
+                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-purple-50">Laptops</a>
+                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-purple-50">Tablets</a>
+                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-purple-50">Accessories</a>
+                        </div>
+                    </div>
+                    <a href="#deals" class="text-gray-600 hover:text-purple-600">Deals</a>
+                    <a href="#about" class="text-gray-600 hover:text-purple-600">About</a>
+                    <a href="#contact" class="text-gray-600 hover:text-purple-600">Contact</a>
+                    <div class="relative">
+                        <i class="fas fa-shopping-cart text-gray-600 text-xl cursor-pointer hover:text-purple-600"></i>
+                        <span class="absolute -top-2 -right-2 bg-purple-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">3</span>
+                    </div>
+                </div>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button class="mobile-menu-button text-gray-600 hover:text-purple-600">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
             </div>
-          </div>
-          <div class="flex items-center">
-            <button class="text-gray-600 hover:text-blue-600 focus:outline-none sm:hidden" id="mobile-menu-button">
-              <i class="fas fa-bars fa-lg"></i>
-            </button>
-          </div>
         </div>
-      </div>
-      <!-- Mobile menu -->
-      <div class="sm:hidden hidden" id="mobile-menu">
-        <div class="pt-2 pb-3 space-y-1">
-          <a href="#products" class="nav-link block">Products</a>
-          <a href="#categories" class="nav-link block">Categories</a>
-          <a href="#testimonials" class="nav-link block">Testimonials</a>
-          <a href="#newsletter" class="nav-link block">Newsletter</a>
-          <a href="#contact" class="nav-link block">Contact</a>
+        <!-- Mobile Menu -->
+        <div class="mobile-menu hidden md:hidden bg-white border-t">
+            <a href="#" class="block py-2 px-4 text-gray-600 hover:bg-purple-50">Shop</a>
+            <a href="#deals" class="block py-2 px-4 text-gray-600 hover:bg-purple-50">Deals</a>
+            <a href="#about" class="block py-2 px-4 text-gray-600 hover:bg-purple-50">About</a>
+            <a href="#contact" class="block py-2 px-4 text-gray-600 hover:bg-purple-50">Contact</a>
         </div>
-      </div>
     </nav>
 
-    <!-- Dummy Sections -->
-    <section id="categories" class="py-16 bg-gray-100">
-      <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold mb-8 text-center">Categories</h2>
-        <p class="text-center text-gray-600">Explore our diverse range of categories.</p>
-      </div>
-    </section>
-    <section id="testimonials" class="py-16 bg-gray-50">
-      <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold mb-8 text-center">Testimonials</h2>
-        <p class="text-center text-gray-600">Hear from our satisfied customers.</p>
-      </div>
-    </section>
-    <section id="newsletter" class="py-16 bg-gray-100">
-      <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold mb-8 text-center">Newsletter</h2>
-        <p class="text-center text-gray-600">Stay updated with our latest news.</p>
-      </div>
-    </section>
-    <section id="contact" class="py-16 bg-gray-50">
-      <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold mb-8 text-center">Contact</h2>
-        <p class="text-center text-gray-600">Get in touch with us.</p>
-      </div>
-    </section>
-    <!-- Header/Navbar -->
-    <header class="bg-white shadow-md fixed w-full z-50 top-0">
-        <nav class="container mx-auto px-4 py-4">
-            <div class="flex justify-between items-center">
-                <!-- Logo -->
-                <a href="#home" class="text-2xl font-bold text-blue-600">TechShop</a>
-                
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="nav-link">Home</a>
-                    <a href="#products" class="nav-link">Products</a>
-                    <a href="#about" class="nav-link">About</a>
-                    <a href="#contact" class="nav-link">Contact</a>
+    <!-- Hero Banner -->
+    <section class="pt-16 relative overflow-hidden bg-gradient-to-r from-purple-900 to-indigo-900">
+        <div class="hero-gradient absolute inset-0"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 relative z-10">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="text-white">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6">Experience Next-Gen Technology</h1>
+                    <p class="text-xl mb-8 text-gray-200">Discover amazing deals on the latest gadgets with up to 50% off. Limited time offers available!</p>
+                    <div class="space-x-4">
+                        <a href="#deals" class="inline-block bg-purple-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-purple-700 transition duration-300 transform hover:scale-105">Explore Deals</a>
+                        <a href="#products" class="inline-block bg-transparent border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-purple-900 transition duration-300">View Products</a>
+                    </div>
                 </div>
-                
-                <!-- Mobile Menu Button -->
-                <button class="md:hidden text-gray-500 hover:text-blue-600" id="mobile-menu-button">
-                    <i class="fas fa-bars text-2xl"></i>
-                </button>
-            </div>
-            
-            <!-- Mobile Menu -->
-            <div class="md:hidden hidden" id="mobile-menu">
-                <div class="py-2 space-y-2">
-                    <a href="#home" class="block nav-link py-2">Home</a>
-                    <a href="#products" class="block nav-link py-2">Products</a>
-                    <a href="#about" class="block nav-link py-2">About</a>
-                    <a href="#contact" class="block nav-link py-2">Contact</a>
+                <div class="hidden md:block float-animation">
+                    <img src="https://images.pexels.com/photos/1029757/pexels-photo-1029757.jpeg" alt="Latest Technology" class="rounded-lg shadow-2xl w-full object-cover" style="height: 400px;">
                 </div>
             </div>
-        </nav>
-    </header>
+        </div>
+    </section>
 
-    <style>
-    .hero-section {
-        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1500&q=80');
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .hero-content {
-        animation: fadeInUp 1s ease-out;
-    }
-
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    .hero-title {
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        background: linear-gradient(45deg, #ffffff, #e0e0e0);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-    }
-
-    .hero-button {
-        position: relative;
-        overflow: hidden;
-        transition: all 0.3s ease;
-    }
-
-    .hero-button:before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-        transition: all 0.5s;
-    }
-
-    .hero-button:hover:before {
-        left: 100%;
-    }
-    </style>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero-section min-h-screen flex items-center justify-center mt-16">
-        <div class="container mx-auto px-4 text-center relative z-10 py-20 hero-content">
-            <h1 class="hero-title text-5xl md:text-7xl font-bold text-white mb-8">Experience Next-Gen Tech</h1>
-            <p class="text-xl md:text-2xl text-gray-200 mb-12 max-w-3xl mx-auto leading-relaxed">Discover cutting-edge gadgets and premium electronics at unbeatable prices. Transform your digital lifestyle today!</p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a href="#products" class="hero-button bg-gradient-to-r from-blue-600 to-purple-600 text-white px-10 py-4 rounded-full text-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 inline-flex items-center">
-                    <span>Shop Now</span>
-                    <i class="fas fa-arrow-right ml-2"></i>
-                </a>
-                <a href="#about" class="hero-button bg-transparent border-2 border-white text-white px-10 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-blue-600 transition-all duration-300 inline-flex items-center">
-                    <span>Learn More</span>
-                    <i class="fas fa-info-circle ml-2"></i>
-                </a>
+    <!-- Featured Categories -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12">Explore Our Categories</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="bg-purple-50 p-8 rounded-xl text-center hover:shadow-lg transition duration-300 transform hover:-translate-y-2 cursor-pointer">
+                    <i class="fas fa-mobile-alt text-4xl text-purple-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Smartphones</h3>
+                    <p class="text-gray-600">Latest flagship models</p>
+                </div>
+                <div class="bg-purple-50 p-8 rounded-xl text-center hover:shadow-lg transition duration-300 transform hover:-translate-y-2 cursor-pointer">
+                    <i class="fas fa-laptop text-4xl text-purple-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Laptops</h3>
+                    <p class="text-gray-600">Powerful performance</p>
+                </div>
+                <div class="bg-purple-50 p-8 rounded-xl text-center hover:shadow-lg transition duration-300 transform hover:-translate-y-2 cursor-pointer">
+                    <i class="fas fa-tablet-alt text-4xl text-purple-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Tablets</h3>
+                    <p class="text-gray-600">Versatile computing</p>
+                </div>
+                <div class="bg-purple-50 p-8 rounded-xl text-center hover:shadow-lg transition duration-300 transform hover:-translate-y-2 cursor-pointer">
+                    <i class="fas fa-headphones text-4xl text-purple-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Accessories</h3>
+                    <p class="text-gray-600">Essential add-ons</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-8">About Us</h2>
-            <div class="max-w-3xl mx-auto text-center text-gray-600">
-                <p class="mb-4">Welcome to TechShop, your premier destination for cutting-edge technology and electronics. We pride ourselves on offering the latest gadgets at competitive prices, backed by exceptional customer service.</p>
-                <p>With fast shipping, secure checkout, and a dedicated support team, we ensure a seamless shopping experience for all our valued customers.</p>
+    <!-- Product Grid -->
+    <section id="products" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12">Featured Products</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Product Card 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
+                    <div class="relative">
+                        <img src="https://images.pexels.com/photos/404280/pexels-photo-404280.jpeg" alt="Latest Smartphone" class="w-full h-48 object-cover lazy-load">
+                        <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-full text-sm">-20%</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-lg font-semibold">iPhone 13 Pro</h3>
+                            <span class="text-sm text-green-600 font-medium">In Stock</span>
+                        </div>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="text-sm text-gray-500 ml-2">(4.5)</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Latest model with ProMotion display</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <p class="text-purple-600 text-xl font-bold">₹89,999</p>
+                            <span class="text-sm text-gray-500 line-through">₹99,999</span>
+                        </div>
+                        <button class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition duration-300 transform hover:scale-105">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
+                    <div class="relative">
+                        <img src="https://images.pexels.com/photos/303383/pexels-photo-303383.jpeg" alt="Gaming Laptop" class="w-full h-48 object-cover lazy-load">
+                        <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-full text-sm">-15%</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-lg font-semibold">ROG Strix G15</h3>
+                            <span class="text-sm text-green-600 font-medium">In Stock</span>
+                        </div>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="text-sm text-gray-500 ml-2">(5.0)</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">RTX 3080 Gaming Laptop</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <p class="text-purple-600 text-xl font-bold">₹149,999</p>
+                            <span class="text-sm text-gray-500 line-through">₹169,999</span>
+                        </div>
+                        <button class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition duration-300 transform hover:scale-105">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
+                    <div class="relative">
+                        <img src="https://images.pexels.com/photos/7014766/pexels-photo-7014766.jpeg" alt="Wireless Earbuds" class="w-full h-48 object-cover lazy-load">
+                        <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-full text-sm">-25%</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-lg font-semibold">AirPods Pro</h3>
+                            <span class="text-sm text-green-600 font-medium">In Stock</span>
+                        </div>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="text-sm text-gray-500 ml-2">(4.9)</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Active Noise Cancellation</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <p class="text-purple-600 text-xl font-bold">₹19,999</p>
+                            <span class="text-sm text-gray-500 line-through">₹24,999</span>
+                        </div>
+                        <button class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition duration-300 transform hover:scale-105">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product Card 4 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
+                    <div class="relative">
+                        <img src="https://images.pexels.com/photos/393047/pexels-photo-393047.jpeg" alt="Smart Watch" class="w-full h-48 object-cover lazy-load">
+                        <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-full text-sm">-30%</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-lg font-semibold">Galaxy Watch 4</h3>
+                            <span class="text-sm text-green-600 font-medium">In Stock</span>
+                        </div>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="text-sm text-gray-500 ml-2">(4.6)</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Advanced Health Tracking</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <p class="text-purple-600 text-xl font-bold">₹24,999</p>
+                            <span class="text-sm text-gray-500 line-through">₹29,999</span>
+                        </div>
+                        <button class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition duration-300 transform hover:scale-105">Add to Cart</button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">Contact Us</h2>
-            <div class="max-w-lg mx-auto">
-                <form class="space-y-6">
-                    <div>
-                        <label class="block text-gray-700 mb-2">Name</label>
-                        <input type="text" class="w-full px-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-500">
+    <!-- Testimonials -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12">What Our Customers Say</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-purple-50 p-6 rounded-xl hover:shadow-lg transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <img src="https://i.pravatar.cc/60?img=1" alt="Customer" class="w-12 h-12 rounded-full">
+                        <div class="ml-4">
+                            <h4 class="font-semibold">John Doe</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <label class="block text-gray-700 mb-2">Email</label>
-                        <input type="email" class="w-full px-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <p class="text-gray-600 italic">"Exceptional service and product quality! The delivery was quick, and the laptop I purchased exceeded my expectations. Will definitely shop here again!"</p>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-purple-50 p-6 rounded-xl hover:shadow-lg transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <img src="https://i.pravatar.cc/60?img=2" alt="Customer" class="w-12 h-12 rounded-full">
+                        <div class="ml-4">
+                            <h4 class="font-semibold">Sarah Smith</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <label class="block text-gray-700 mb-2">Message</label>
-                        <textarea class="w-full px-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-500" rows="4"></textarea>
+                    <p class="text-gray-600 italic">"The customer support team was incredibly helpful in guiding me through my purchase. The prices are competitive, and the products are authentic."</p>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-purple-50 p-6 rounded-xl hover:shadow-lg transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <img src="https://i.pravatar.cc/60?img=3" alt="Customer" class="w-12 h-12 rounded-full">
+                        <div class="ml-4">
+                            <h4 class="font-semibold">Mike Johnson</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
                     </div>
-                    <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors duration-300">Send Message</button>
-                </form>
+                    <p class="text-gray-600 italic">"Great deals and discounts! I saved a lot on my new smartphone. The website is user-friendly, and checkout was smooth."</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Mobile Menu Script -->
+    <!-- Live Chat Widget -->
+    <div class="fixed bottom-4 right-4 z-50">
+        <button class="bg-purple-600 text-white p-4 rounded-full shadow-lg hover:bg-purple-700 transition duration-300 transform hover:scale-105 group">
+            <i class="fas fa-comments text-2xl"></i>
+            <span class="absolute right-full mr-2 bg-white text-purple-600 px-4 py-2 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Chat with us!</span>
+        </button>
+    </div>
+
+    <!-- Newsletter Signup -->
+    <section class="py-16 bg-gradient-to-r from-purple-600 to-indigo-600 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold mb-4">Stay Updated with Latest Deals</h2>
+            <p class="text-lg mb-8 text-gray-200">Subscribe to our newsletter and get exclusive offers directly in your inbox</p>
+            <form class="max-w-md mx-auto flex gap-4">
+                <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-300 text-gray-800">
+                <button type="submit" class="bg-white text-purple-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300 transform hover:scale-105">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <div class="space-y-2">
+                        <a href="#" class="block text-gray-300 hover:text-white transition duration-300">About Us</a>
+                        <a href="#" class="block text-gray-300 hover:text-white transition duration-300">FAQs</a>
+                        <a href="#" class="block text-gray-300 hover:text-white transition duration-300">Contact</a>
+                        <a href="#" class="block text-gray-300 hover:text-white transition duration-300">Terms</a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Categories</h3>
+                    <div class="space-y-2">
+                        <a href="#" class="block text-gray-300 hover:text-white transition duration-300">Smartphones</a>
+                        <a href="#" class="block text-gray-300 hover:text-white transition duration-300">Laptops</a>
+                        <a href="#" class="block text-gray-300 hover:text-white transition duration-300">Tablets</a>
+                        <a href="#" class="block text-gray-300 hover:text-white transition duration-300">Accessories</a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Customer Service</h3>
+                    <div class="space-y-2">
+                        <a href="#" class="block text-gray-300 hover:text-white transition duration-300">Shipping Info</a>
+                        <a href="#" class="block text-gray-300 hover:text-white transition duration-300">Returns</a>
+                        <a href="#" class="block text-gray-300 hover:text-white transition duration-300">Order Status</a>
+                        <a href="#" class="block text-gray-300 hover:text-white transition duration-300">Payment Options</a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Connect With Us</h3>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="text-gray-300 hover:text-white transition duration-300 transform hover:scale-110"><i class="fab fa-facebook text-2xl"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white transition duration-300 transform hover:scale-110"><i class="fab fa-twitter text-2xl"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white transition duration-300 transform hover:scale-110"><i class="fab fa-instagram text-2xl"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white transition duration-300 transform hover:scale-110"><i class="fab fa-youtube text-2xl"></i></a>
+                    </div>
+                    <p class="text-gray-300">Email: support@techshop.com</p>
+                    <p class="text-gray-300">Phone: (555) 123-4567</p>
+                </div>
+            </div>
+            <div class="text-center pt-8 border-t border-gray-800">
+                <p class="text-gray-300">&copy; 2024 TechShop. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
     <script>
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
+        // Mobile menu toggle
+        const mobileMenuButton = document.querySelector('.mobile-menu-button');
+        const mobileMenu = document.querySelector('.mobile-menu');
 
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Smooth scroll for navigation links
+        // Lazy loading images
+        document.addEventListener('DOMContentLoaded', function() {
+            const lazyImages = document.querySelectorAll('.lazy-load');
+            
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('loaded');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            });
+
+            lazyImages.forEach(img => imageObserver.observe(img));
+        });
+
+        // Live chat widget toggle
+        const chatButton = document.querySelector('.fixed.bottom-4.right-4 button');
+        chatButton.addEventListener('click', () => {
+            // Implement your live chat functionality here
+            alert('Live chat feature coming soon! Please email us at support@techshop.com');
+        });
+
+        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
-                // Close mobile menu if open
-                if (!mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.add('hidden');
-                }
             });
         });
     </script>
 </body>
 </html>
-
-<!-- Products Section -->
-<section id="products" class="py-20 bg-white">
-    <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-12">Featured Products</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Product 1 -->
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9" alt="Smartphone" class="w-full h-48 object-cover rounded-lg mb-4" loading="lazy">
-                <h3 class="text-xl font-semibold mb-2">Premium Smartphone</h3>
-                <div class="flex items-center mb-2">
-                    <span class="text-yellow-400">★★★★★</span>
-                    <span class="text-gray-500 ml-2">(128)</span>
-                </div>
-                <p class="text-gray-600 mb-4">Latest model with advanced features</p>
-                <div class="flex justify-between items-center">
-                    <span class="text-2xl font-bold text-blue-600">$999</span>
-                    <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-300">Add to Cart</button>
-                </div>
-            </div>
-
-            <!-- Product 2 -->
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853" alt="Laptop" class="w-full h-48 object-cover rounded-lg mb-4" loading="lazy">
-                <h3 class="text-xl font-semibold mb-2">Ultra-Slim Laptop</h3>
-                <div class="flex items-center mb-2">
-                    <span class="text-yellow-400">★★★★☆</span>
-                    <span class="text-gray-500 ml-2">(89)</span>
-                </div>
-                <p class="text-gray-600 mb-4">Powerful performance in a slim design</p>
-                <div class="flex justify-between items-center">
-                    <span class="text-2xl font-bold text-blue-600">$1,299</span>
-                    <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-300">Add to Cart</button>
-                </div>
-            </div>
-
-            <!-- Product 3 -->
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e" alt="Headphones" class="w-full h-48 object-cover rounded-lg mb-4" loading="lazy">
-                <h3 class="text-xl font-semibold mb-2">Wireless Headphones</h3>
-                <div class="flex items-center mb-2">
-                    <span class="text-yellow-400">★★★★★</span>
-                    <span class="text-gray-500 ml-2">(256)</span>
-                </div>
-                <p class="text-gray-600 mb-4">Premium sound quality and comfort</p>
-                <div class="flex justify-between items-center">
-                    <span class="text-2xl font-bold text-blue-600">$199</span>
-                    <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-300">Add to Cart</button>
-                </div>
-            </div>
-
-            <!-- Product 4 -->
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30" alt="Smartwatch" class="w-full h-48 object-cover rounded-lg mb-4" loading="lazy">
-                <h3 class="text-xl font-semibold mb-2">Smart Watch Pro</h3>
-                <div class="flex items-center mb-2">
-                    <span class="text-yellow-400">★★★★☆</span>
-                    <span class="text-gray-500 ml-2">(167)</span>
-                </div>
-                <p class="text-gray-600 mb-4">Track your fitness and stay connected</p>
-                <div class="flex justify-between items-center">
-                    <span class="text-2xl font-bold text-blue-600">$299</span>
-                    <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-300">Add to Cart</button>
-                </div>
-            </div>
-
-            <!-- Product 5 -->
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1585790050230-5dd28404ccb9" alt="Tablet" class="w-full h-48 object-cover rounded-lg mb-4" loading="lazy">
-                <h3 class="text-xl font-semibold mb-2">Pro Tablet 2024</h3>
-                <div class="flex items-center mb-2">
-                    <span class="text-yellow-400">★★★★★</span>
-                    <span class="text-gray-500 ml-2">(142)</span>
-                </div>
-                <p class="text-gray-600 mb-4">Versatile and powerful computing</p>
-                <div class="flex justify-between items-center">
-                    <span class="text-2xl font-bold text-blue-600">$799</span>
-                    <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-300">Add to Cart</button>
-                </div>
-            </div>
-
-            <!-- Product 6 -->
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32" alt="Camera" class="w-full h-48 object-cover rounded-lg mb-4" loading="lazy">
-                <h3 class="text-xl font-semibold mb-2">Digital Camera Pro</h3>
-                <div class="flex items-center mb-2">
-                    <span class="text-yellow-400">★★★★☆</span>
-                    <span class="text-gray-500 ml-2">(93)</span>
-                </div>
-                <p class="text-gray-600 mb-4">Capture life's moments in detail</p>
-                <div class="flex justify-between items-center">
-                    <span class="text-2xl font-bold text-blue-600">$699</span>
-                    <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-300">Add to Cart</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Footer Section -->
-<footer class="bg-gray-900 text-white py-16">
-    <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <!-- Company Info -->
-            <div>
-                <h3 class="text-2xl font-bold mb-4">TechShop</h3>
-                <p class="text-gray-400 mb-4">Your one-stop destination for premium electronics and cutting-edge technology.</p>
-                <div class="flex space-x-4">
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Quick Links -->
-            <div>
-                <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
-                <ul class="space-y-2">
-                    <li><a href="#home" class="text-gray-400 hover:text-white transition-colors duration-300">Home</a></li>
-                    <li><a href="#products" class="text-gray-400 hover:text-white transition-colors duration-300">Products</a></li>
-                    <li><a href="#about" class="text-gray-400 hover:text-white transition-colors duration-300">About Us</a></li>
-                    <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors duration-300">Contact</a></li>
-                </ul>
-            </div>
-
-            <!-- Contact Info -->
-            <div>
-                <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
-                <ul class="space-y-2 text-gray-400">
-                    <li><i class="fas fa-phone mr-2"></i> +1 (555) 123-4567</li>
-                    <li><i class="fas fa-envelope mr-2"></i> support@techshop.com</li>
-                    <li><i class="fas fa-map-marker-alt mr-2"></i> 123 Tech Street, Digital City</li>
-                </ul>
-            </div>
-
-            <!-- Newsletter -->
-            <div>
-                <h4 class="text-lg font-semibold mb-4">Newsletter</h4>
-                <p class="text-gray-400 mb-4">Subscribe to get special offers and updates.</p>
-                <form class="flex">
-                    <input type="email" placeholder="Enter your email" class="bg-gray-800 text-white px-4 py-2 rounded-l-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <button type="submit" class="bg-blue-600 px-6 py-2 rounded-r-lg hover:bg-blue-700 transition-colors duration-300">Subscribe</button>
-                </form>
-            </div>
-        </div>
-
-        <!-- Copyright -->
-        <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 TechShop. All rights reserved.</p>
-        </div>
-    </div>
-</footer>
